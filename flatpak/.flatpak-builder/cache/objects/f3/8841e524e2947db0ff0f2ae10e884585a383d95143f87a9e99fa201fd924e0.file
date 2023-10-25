@@ -1,0 +1,5 @@
+[Runtime]
+name=org.flatpak.credentialsfetcher.Debug
+
+[ExtensionOf]
+ref=app/org.flatpak.credentialsfetcher/x86_64/master

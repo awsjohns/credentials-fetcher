@@ -1,0 +1,36 @@
+{
+  "id" : "org.flatpak.credentialsfetcher",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "22.08",
+  "runtime-commit" : "12e6f0416b1a1c32dc29994ee8068725e114198bd7cee570039df3f89bef5167",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-commit" : "0b0b51adee93ea2dbac74801df63d19aaebb07e780674de76e0955faf130a568",
+  "command" : "run_credentials_fetcher_flatpak.sh",
+  "modules" : [
+    {
+      "name" : "credentialsfetcher",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "path" : "run_credentials_fetcher_flatpak.sh",
+          "type" : "file"
+        },
+        {
+          "path" : "credentials-fetcherd",
+          "type" : "file"
+        },
+        {
+          "path" : "libs/",
+          "type" : "dir"
+        }
+      ],
+      "build-commands" : [
+        "install -D run_credentials_fetcher_flatpak.sh /app/bin/run_credentials_fetcher_flatpak.sh",
+        "install -D credentials-fetcherd /app/bin/credentials-fetcherd",
+        "install -d /app/lib",
+        "install -D * /app/lib/"
+      ]
+    }
+  ],
+  "source-date-epoch" : 1698194179
+}
