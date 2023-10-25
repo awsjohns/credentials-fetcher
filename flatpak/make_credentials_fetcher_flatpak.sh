@@ -28,4 +28,10 @@ flatpak-builder build-dir org.flatpak.credentialsfetcher.yml
 flatpak-builder --user --install --force-clean build-dir org.flatpak.credentialsfetcher.yml
 #flatpak run  --filesystem=home org.flatpak.credentialsfetcher
 
+#build the bundle for distribution
+
+flatpak build-export export build-dir
+
+flatpak build-bundle export credentialsfetcher.flatpak org.flatpak.credentialsfetcher
+
 exit 0
