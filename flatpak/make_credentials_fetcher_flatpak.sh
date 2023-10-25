@@ -34,4 +34,10 @@ flatpak build-export export build-dir
 
 flatpak build-bundle export credentialsfetcher.flatpak org.flatpak.credentialsfetcher
 
+#cleanup
+rm -rf libs
+rm -rf build-dir
+rm tmpfile.txt
+rm -rf export
+rm -rf .flatpak-builder
 exit 0
