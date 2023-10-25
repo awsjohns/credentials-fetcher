@@ -4,9 +4,9 @@ echo "Running Credentials-fetcher flatpak"
 
 cd /app/bin
 
-mkdir /var/credentials-fetcher/
-mkdir /var/credentials-fetcher/socket/
-mkdir /var/credentials-fetcher/krbdir/
-mkdir /var/credentials-fetcher/logging/
+mkdir -p /var/credentials-fetcher/
+mkdir -p /var/credentials-fetcher/socket/
+mkdir -p /var/credentials-fetcher/krbdir/
+mkdir -p /var/credentials-fetcher/logging/
 
 ./credentials-fetcherd

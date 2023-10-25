@@ -2,13 +2,13 @@
 
 set -x
 
-if [ ! -f credentials-fetcherd ];
+if [ ! -f ../build/credentials-fetcherd ];
 then
    echo "**ERROR: Please copy the credentials-fetcher binary to this directory"
    exit 1
 fi
 
-LIB_FILES=$(ldd ./credentials-fetcherd | grep -v linux-vdso | grep -v ld-linux | awk '{print $3}')
+LIB_FILES=$(ldd ../build/credentials-fetcherd | grep -v linux-vdso | grep -v ld-linux | awk '{print $3}')
 
 rm -rf libs
 mkdir -p libs
