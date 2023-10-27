@@ -178,6 +178,8 @@ class CredentialsFetcherImpl final
                         int status = 0;
                         if ( aws_sm_secret_name.length() != 0 )
                         {
+                            std::cout << "getting user krb ticket" << aws_sm_secret_name << std::endl;
+
                             status = get_user_krb_ticket( krb_ticket->domain_name,
                                                           aws_sm_secret_name, cf_logger );
                             krb_ticket->domainless_user =
@@ -185,6 +187,7 @@ class CredentialsFetcherImpl final
                         }
                         else
                         {
+                            std::cout << "getting machine krb ticket" << std::endl;
                             status = get_machine_krb_ticket( krb_ticket->domain_name, cf_logger );
                         }
                         if ( status < 0 )

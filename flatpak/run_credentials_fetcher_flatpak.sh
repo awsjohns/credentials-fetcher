@@ -9,4 +9,4 @@ mkdir -p /var/credentials-fetcher/socket/
 mkdir -p /var/credentials-fetcher/krbdir/
 mkdir -p /var/credentials-fetcher/logging/
 
-./credentials-fetcherd
+./credentials-fetcherd -s gmsa-plugin-input

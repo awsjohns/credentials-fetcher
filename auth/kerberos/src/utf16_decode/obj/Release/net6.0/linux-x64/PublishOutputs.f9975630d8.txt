@@ -1,0 +1,2 @@
+/home/ec2-user/build/credentials-fetcher/auth/kerberos/src/utf16_decode/dotnetwarp_temp/utf16_decode.pdb
+/home/ec2-user/build/credentials-fetcher/auth/kerberos/src/utf16_decode/dotnetwarp_temp/utf16_decode

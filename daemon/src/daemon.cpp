@@ -45,6 +45,8 @@ void* grpc_thread_start( void* arg )
     printf( "Thread %d: top of stack near %p; argv_string=%s\n", tinfo->thread_num, (void*)&tinfo,
             tinfo->argv_string );
 
+    std::cout << cf_daemon.aws_sm_secret_name << std::endl;
+
     RunGrpcServer( cf_daemon.unix_socket_dir, cf_daemon.krb_files_dir, cf_daemon.cf_logger,
                    &cf_daemon.got_systemd_shutdown_signal, cf_daemon.aws_sm_secret_name );
 

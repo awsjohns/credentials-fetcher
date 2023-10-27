@@ -206,6 +206,7 @@ int get_user_krb_ticket( std::string domain_name, std::string aws_sm_secret_name
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
+        std::cout << "bad permissions on hostname" << std::endl;
         return -1;
     }
 
@@ -213,6 +214,7 @@ int get_user_krb_ticket( std::string domain_name, std::string aws_sm_secret_name
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
+	std::cout << "bad permissions on realm" << std::endl;
         return -1;
     }
 
@@ -220,6 +222,7 @@ int get_user_krb_ticket( std::string domain_name, std::string aws_sm_secret_name
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
+        std::cout << "bad permissions on kinit" << std::endl;
         return -1;
     }
 
@@ -227,19 +230,23 @@ int get_user_krb_ticket( std::string domain_name, std::string aws_sm_secret_name
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
+        std::cout << "bad permissions on ldapsearch" << std::endl;
         return -1;
     }
 
     if ( !check_file_permissions( install_path_for_decode_exe ) )
     {
-        return -1;
+        //std::cout << "bad permissions on decode_exe" << std::endl;
+        //return -1;
     }
 
     if ( !check_file_permissions( install_path_for_aws_cli ) )
     {
+        std::cout << "bad permissions on aws cli" << std::endl;
         return -1;
     }
 
+    std::cout << "going to get secret value" << std::endl;
     std::string command =
         install_path_for_aws_cli + std::string( " secretsmanager get-secret-value --secret-id " ) + aws_sm_secret_name + " --query 'SecretString' --output text";
     // /usr/bin/aws secretsmanager get-secret-value --secret-id aws/directoryservices/d-xxxxxxxxxx/gmsa --query 'SecretString' --output text
@@ -258,6 +265,7 @@ int get_user_krb_ticket( std::string domain_name, std::string aws_sm_secret_name
     std::transform( domain_name.begin(), domain_name.end(), domain_name.begin(),
                     []( unsigned char c ) { return std::toupper( c ); } );
 
+    std::cout << "got the secret going to run kinit" << std::endl;
     // kinit using api interface
     char *kinit_argv[3];
 

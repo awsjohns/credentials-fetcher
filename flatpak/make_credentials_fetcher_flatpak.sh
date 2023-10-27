@@ -22,10 +22,30 @@ do
   fi
 done < tmpfile.txt
 
+LIB_FILES=$(ldd /usr/bin/dig | grep -v linux-vdso | grep -v ld-linux | awk '{print $3}')
+echo "$LIB_FILES" | sed 's/ /\n/g' > tmpfile.txt
+while read -r LINE
+do
+  if [ "$LINE" != "/lib64/libc.so.6" ]; then
+    cp $LINE libs
+  fi
+done < tmpfile.txt
+
+LIB_FILES=$(ldd /usr/bin/ldapsearch | grep -v linux-vdso | grep -v ld-linux | awk '{print $3}')
+echo "$LIB_FILES" | sed 's/ /\n/g' > tmpfile.txt
+while read -r LINE
+do
+  if [ "$LINE" != "/lib64/libc.so.6" ]; then
+    cp $LINE libs
+  fi
+done < tmpfile.txt
+
+
+#cp -r /usr/lib64/sasl2/* libs/
 
 \rm -rf build-dir
 flatpak-builder build-dir org.flatpak.credentialsfetcher.yml
-flatpak-builder --user --install --force-clean build-dir org.flatpak.credentialsfetcher.yml
+flatpak-builder --share=network --user --install --force-clean build-dir org.flatpak.credentialsfetcher.yml
 #flatpak run  --filesystem=home org.flatpak.credentialsfetcher
 
 #build the bundle for distribution
