@@ -41,7 +41,9 @@ do
 done < tmpfile.txt
 
 
-#cp -r /usr/lib64/sasl2/* libs/
+mkdir aws
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "aws/awscliv2.zip"
+unzip aws/awscliv2.zip -d aws/
 
 \rm -rf build-dir
 flatpak-builder build-dir org.flatpak.credentialsfetcher.yml
@@ -60,4 +62,5 @@ rm -rf build-dir
 rm tmpfile.txt
 rm -rf export
 rm -rf .flatpak-builder
+rm -rf aws
 exit 0
