@@ -47,7 +47,7 @@ unzip aws/awscliv2.zip -d aws/
 
 \rm -rf build-dir
 flatpak-builder build-dir org.flatpak.credentialsfetcher.yml
-flatpak-builder --share=network --user --install --force-clean build-dir org.flatpak.credentialsfetcher.yml
+flatpak-builder  --user --install --force-clean build-dir org.flatpak.credentialsfetcher.yml
 #flatpak run  --filesystem=home org.flatpak.credentialsfetcher
 
 #build the bundle for distribution

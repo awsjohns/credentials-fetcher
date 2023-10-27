@@ -1,6 +1,7 @@
 #after building on AL2023, we can package up with FlatPak so it can be distributed to 
 #Amazon Linux 2 and run with FlatPak
 
+```
 #install Github utility
 yum install yum-utils -y
 
@@ -36,3 +37,5 @@ flatpak build-bundle export example.flatpak org.flatpak.credentials
 
 #copy the flatpak bundle to S3 to distribute
 aws s3 cp example.flatpak s3://your-bucket-name
+
+```

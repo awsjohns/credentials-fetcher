@@ -14,8 +14,8 @@
 #define HOST_NAME_LENGTH_LIMIT 15
 
 static const std::string install_path_for_decode_exe =
-    "/usr/sbin/credentials_fetcher_utf16_private.exe";
-static const std::string install_path_for_aws_cli = "/usr/bin/aws";
+    "/app/bin/credentials_fetcher_utf16_private.exe";
+static const std::string install_path_for_aws_cli = "/app/bin/aws";
 
 extern "C" int my_kinit_main(int, char **);
 
