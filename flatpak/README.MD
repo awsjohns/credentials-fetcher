@@ -1,3 +1,28 @@
+
+Building on Amazon Linux 2023
+```
+yum install cmake3 make chrpath openldap-clients grpc-devel gcc-c++ glib2-devel boost-devel -y
+yum install openssl-devel zlib-devel protobuf-devel re2-devel krb5-devel systemd-devel -y
+yum install systemd-rpm-macros dotnet-sdk-6.0 grpc-plugins -y
+yum install bind-utils openldap openldap-clients awscli dotnet-runtime-6.0 -y
+yum install jsoncpp-devel jsoncpp -y
+yum install krb5-workstation -y
+yum install cyrus-sasl-gssapi -y
+yum install git -y
+
+#get the code
+git clone https://github.com/awsjohns/credentials-fetcher.git
+cd credentials-fetcher/
+git switch flatpak
+
+#build the app
+mkdir build
+cd build
+cmake ../
+make -j 4
+
+```
+
 #after building on AL2023, we can package up with FlatPak so it can be distributed to 
 #Amazon Linux 2 and run with FlatPak
 
