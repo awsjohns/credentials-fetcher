@@ -51,7 +51,7 @@ chmod +x ./make_credentials_fetcher_flatpak.sh
 
 Run credentials-fetcher flatpack app to test it
 ```
-flatpak run --share=network  --filesystem=/var --env=CF_CRED_SPEC_FILE="/var/credentials-fetcher/credspec.json"  org.flatpak.credentialsfetcher
+flatpak run --share=network  --filesystem=/var --env=CF_CRED_SPEC_FILE="/var/credentials-fetcher/credspec.json"  org.flatpak.credentialsfetcher -s gmsa-plugin-input
 ```
 
 
