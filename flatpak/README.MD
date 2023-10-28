@@ -53,13 +53,18 @@ Run credentials-fetcher flatpack app to test it
 ```
 flatpak run --share=network  --filesystem=/var  org.flatpak.credentialsfetcher
 ```
-build the bundle for distribution
+
+
+Build the bundle for distribution
 ```
 flatpak build-export export build-dir
 
 flatpak build-bundle export example.flatpak org.flatpak.credentials
 ```
-Copy the flatpak bundle to S3 to distribute
+
+
+Copy the flatpak bundle to S3 for distribute
+```
 aws s3 cp example.flatpak s3://your-bucket-name
 
 ```
