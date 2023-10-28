@@ -52,9 +52,9 @@ flatpak-builder  --user --install --force-clean build-dir org.flatpak.credential
 
 #build the bundle for distribution
 
-#flatpak build-export export build-dir
+flatpak build-export export build-dir
 
-#flatpak build-bundle export credentialsfetcher.flatpak org.flatpak.credentialsfetcher
+flatpak build-bundle export credentialsfetcher.flatpak org.flatpak.credentialsfetcher
 
 #cleanup
 rm -rf libs
