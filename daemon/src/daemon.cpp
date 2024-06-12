@@ -47,6 +47,8 @@ void* grpc_thread_start( void* arg )
     printf( "Thread %d: top of stack near %p; argv_string=%s\n", tinfo->thread_num, (void*)&tinfo,
             tinfo->argv_string );
 
+    std::cout << cf_daemon.aws_sm_secret_name << std::endl;
+
     RunGrpcServer( cf_daemon.unix_socket_dir, cf_daemon.krb_files_dir, cf_daemon.cf_logger,
                    &cf_daemon.got_systemd_shutdown_signal, cf_daemon.aws_sm_secret_name );
 
@@ -240,7 +242,7 @@ int main( int argc, const char* argv[] )
     if ( !cf_daemon.cred_file.empty() ) {
         cf_daemon.cf_logger.logger( LOG_INFO, "Credential file exists %s", cf_daemon.cred_file.c_str() );
         
-        int specFileReturn = ProcessCredSpecFile(cf_daemon.krb_files_dir, cf_daemon.cred_file, cf_daemon.cf_logger, cred_file_lease_id);
+        int specFileReturn = ProcessCredSpecFile(cf_daemon.krb_files_dir, cf_daemon.cred_file, cf_daemon.cf_logger, cred_file_lease_id,cf_daemon.aws_sm_secret_name);
         if (specFileReturn == EXIT_FAILURE) {
             std::cout << "ProcessCredSpecFile() non 0 " << std::endl;
             exit( EXIT_FAILURE );
